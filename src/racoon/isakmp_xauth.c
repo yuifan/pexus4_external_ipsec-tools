@@ -1179,6 +1179,8 @@ ldap_group_end:
 
 #endif
 
+#ifndef ANDROID_PATCHED
+
 int
 xauth_login_system(usr, pwd)
 	char *usr;
@@ -1215,6 +1217,8 @@ xauth_login_system(usr, pwd)
 
 	return -1;
 }
+
+#endif
 
 int
 xauth_group_system(usr, grp)
@@ -1418,6 +1422,9 @@ isakmp_xauth_req(iph1, attr)
 		iph1->rmconf->xauth->state |= XAUTH_SENT_USERNAME;
 		break;
 
+#ifdef ANDROID_PATCHED
+        case XAUTH_PASSCODE:
+#endif  
 	case XAUTH_USER_PASSWORD:
 		if (!iph1->rmconf->xauth || !iph1->rmconf->xauth->login)
 			return NULL;
@@ -1504,6 +1511,9 @@ isakmp_xauth_req(iph1, attr)
 		 */
 		memcpy(data, iph1->rmconf->xauth->login->v, dlen);
 		break;
+#ifdef ANDROID_PATCHED
+        case XAUTH_PASSCODE:
+#endif  
 	case XAUTH_USER_PASSWORD:
 		memcpy(data, pwd->v, dlen);
 		break;

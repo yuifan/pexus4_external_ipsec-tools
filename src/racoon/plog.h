@@ -43,7 +43,7 @@
 #define LLV_DEBUG   4
 #define LLV_DEBUG2  5
 
-#define loglevel LLV_INFO
+#define loglevel LLV_DEBUG2
 
 #define plog(level, location, address, ...)                 \
     do {                                                    \
@@ -55,7 +55,8 @@
 #define plogdump(...)
 
 extern void do_plog(int level, char *format, ...);
-extern char* binsanitize(char *binary, size_t size);
+extern char *binsanitize(char *binary, size_t size);
+extern char *pname;
 
 #else
 

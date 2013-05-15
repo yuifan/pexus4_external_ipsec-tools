@@ -3,7 +3,8 @@
 #define ENABLE_NATT_00
 #define ENABLE_NATT_02
 #define ENABLE_NATT_RFC
-#undef ENABLE_DPD
+#define ENABLE_DPD
+#define ENABLE_HYBRID
 
 #define HAVE_OPENSSL_AES_H
 #undef HAVE_OPENSSL_ENGINE_H
@@ -20,5 +21,7 @@
 #define TIME_WITH_SYS_TIME 1
 #define HAVE_SYS_TIME_H 1
 #define HAVE_UNISTD_H
+
+#define RETSIGTYPE void
 
 #define ANDROID_PATCHED
